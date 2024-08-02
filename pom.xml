@@ -1,0 +1,360 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>uz.sectorsoft</groupId>
+  <artifactId>TokenGenerator</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>TokenGenerator</name>
+  <url>http://maven.apache.org</url>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.7.3</version>
+    <relativePath /> <!-- lookup parent from repository -->
+  </parent>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Custom dependencies -->
+    <dependency>
+      <groupId>uz.yt.cams</groupId>
+      <artifactId>cams-common</artifactId>
+      <version>2.11-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/cams-common-2.11-SNAPSHOT.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>uz.yt.cams</groupId>
+      <artifactId>cams-pki</artifactId>
+      <version>2.11-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/cams-pki-2.11-SNAPSHOT.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>uz.yt.idcard</groupId>
+      <artifactId>pki</artifactId>
+      <version>1.6-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/pki-1.6-SNAPSHOT.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>uz.yt.cipher</groupId>
+      <artifactId>uz.yt.cipher-lib</artifactId>
+      <version>1.5-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/yt-cipher-lib-1.5-SNAPSHOT.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>uz.yt.crypt</groupId>
+      <artifactId>yt.crypt-lib</artifactId>
+      <version>1.5-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/yt-crypt-lib-1.5-SNAPSHOT.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>uz.yt.jce</groupId>
+      <artifactId>yt-jce-lib</artifactId>
+      <version>1.5-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/yt-jce-lib-1.5-SNAPSHOT.jar</systemPath>
+    </dependency>
+
+    <!-- Bouncy Castle Dependencies -->
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcprov-jdk15on</artifactId>
+      <version>1.50</version>
+    </dependency>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcpkix-jdk15on</artifactId>
+      <version>1.50</version>
+    </dependency>
+
+    <!-- Additional dependencies from the image -->
+    <dependency>
+      <groupId>annotations</groupId>
+      <artifactId>annotations</artifactId>
+      <version>2.0.1</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/annotations-2.0.1.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>apple</groupId>
+      <artifactId>apple</artifactId>
+      <version>1.6-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/applet-1.6-SNAPSHOT.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>bcprov</groupId>
+      <artifactId>bcprov-jdk15on</artifactId>
+      <version>1.50</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/bcprov-jdk15on-1.50.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>bcprov</groupId>
+      <artifactId>bcpkix-jdk15on</artifactId>
+      <version>1.50</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/bcpkix-jdk15on-1.50.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>cams</groupId>
+      <artifactId>cams-common</artifactId>
+      <version>2.11-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/cams-common-2.11-SNAPSHOT.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>cams</groupId>
+      <artifactId>cams-pki</artifactId>
+      <version>2.11-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/cams-pki-2.11-SNAPSHOT.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>e-imzo</groupId>
+      <artifactId>e-imzo-tunnel-client</artifactId>
+      <version>1.6.3-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/e-imzo-tunnel-client-1.6.3-SNAPSHOT.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>e-imzo</groupId>
+      <artifactId>e-imzo-tunnel-common</artifactId>
+      <version>1.6.3-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/e-imzo-tunnel-common-1.6.3-SNAPSHOT.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>grizzly</groupId>
+      <artifactId>grizzly-framework</artifactId>
+      <version>2.3.13</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/grizzly-framework-2.3.13.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>grizzly</groupId>
+      <artifactId>grizzly-http-server</artifactId>
+      <version>2.3.13</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/grizzly-http-server-2.3.13.jar</systemPath>
+    </dependency>
+
+    <!-- <dependency>
+      <groupId>gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.4</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/gson-2.4.jar</systemPath>
+    </dependency> -->
+
+    <dependency>
+      <groupId>guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>15.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/guava-15.0.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>hamcrest</groupId>
+      <artifactId>hamcrest-core</artifactId>
+      <version>1.1</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/hamcrest-core-1.1.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>idcard</groupId>
+      <artifactId>idcard-usertool</artifactId>
+      <version>4.47-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/idcard-usertool-4.47-SNAPSHOT.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>javassist</groupId>
+      <artifactId>javassist</artifactId>
+      <version>3.19.0-GA</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/javassist-3.19.0-GA.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.websocket</groupId>
+      <artifactId>javax.websocket-api</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/javax.websocket-api-1.0.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>jna</groupId>
+      <artifactId>jna</artifactId>
+      <version>4.0.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/jna-4.0.0.jar</systemPath>
+    </dependency>
+
+    <!-- <dependency>
+      <groupId>jna</groupId>
+      <artifactId>jna</artifactId>
+      <version>platform-4.0.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/jna-platform-4.0.0.jar</systemPath>
+    </dependency> -->
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.10</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/junit-4.10.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>kernel</groupId>
+      <artifactId>kernel</artifactId>
+      <version>4.47-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/kernel-4.47-SNAPSHOT.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>netty</groupId>
+      <artifactId>netty-all</artifactId>
+      <version>5.0.0.Alpha2</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/netty-all-5.0.0.Alpha2.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>pki</groupId>
+      <artifactId>pki</artifactId>
+      <version>1.6-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/pki-1.6-SNAPSHOT.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>reflections</groupId>
+      <artifactId>reflections</artifactId>
+      <version>0.9.10</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/reflections-0.9.10.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>stunnel</groupId>
+      <artifactId>stunnel-core</artifactId>
+      <version>1.1-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/stunnel-core-1.1-SNAPSHOT.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>tyrus</groupId>
+      <artifactId>tyrus-container-grizzly-client</artifactId>
+      <version>1.7</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/tyrus-container-grizzly-client-1.7.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>tyrus</groupId>
+      <artifactId>tyrus-container-grizzly-server</artifactId>
+      <version>1.7</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/tyrus-container-grizzly-server-1.7.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>tyrus</groupId>
+      <artifactId>tyrus-core</artifactId>
+      <version>1.7</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/tyrus-core-1.7.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>tyrus</groupId>
+      <artifactId>tyrus-server</artifactId>
+      <version>1.7</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/tyrus-server-1.7.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>tyrus</groupId>
+      <artifactId>tyrus-spi</artifactId>
+      <version>1.7</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/tyrus-spi-1.7.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>yt-cipher</groupId>
+      <artifactId>yt-cipher-lib</artifactId>
+      <version>1.5-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/yt-cipher-lib-1.5-SNAPSHOT.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>yt-crypt</groupId>
+      <artifactId>yt-crypt-lib</artifactId>
+      <version>1.5-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/yt-crypt-lib-1.5-SNAPSHOT.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>yt-jce</groupId>
+      <artifactId>yt-jce-lib</artifactId>
+      <version>1.5-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/yt-jce-lib-1.5-SNAPSHOT.jar</systemPath>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>
